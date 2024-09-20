@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Form Validation</title>
+    <style>
+        ul {
+            padding:0;
+        }
+        ul li {
+            list-style:none;
+        }
+    </style>
+</head>
+<body>
+    <div id="usermsg"></div>
+    <form name="myform" action="" method="">
+        <ul>
+            <li>Email: <input type="text" name="email" id="email" maxlength="20" /></li>
+            <li>Age: <input type="text" name="age" id="age" maxlength="10" /></li>
+            <li>
+                <input 
+                    type="radio" 
+                    name="choices" 
+                    id="red" 
+                    value="Red" 
+                />Red<br />
+
+                <input 
+                    type="radio" 
+                    name="choices" 
+                    id="green" 
+                    value="Green" 
+                />Green<br />
+                    
+                <input 
+                    type="radio" 
+                    name="choices" 
+                    id="blue" 
+                    value="Blue" 
+                />Blue<br >
+            </li>
+            <li>
+                <input type="button" name="submitform" id="submitform" value="Click To Submit" />
+            </li>
+            <li>
+                <input type="reset" name="resetForm" id="resetForm" value="Reset" />
+            </li>
+        </ul>
+    </form>
+    <script type="module" src="../js/script.js"></script>    
+</body>
+</html>

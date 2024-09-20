@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style.css">
+    <title>User Input</title>
+</head>
+<body>
+    <div class="container">
+        <div class="title" id="result">
+            <h2>Input Form</h2>
+        </div>
+
+        <form class="input-box" action="" method="POST">
+                <div class="input-group">
+                    <label class="item" for="username">Username:</label>
+                    <input class="item form-input" type="text" name="username" id="username" placeholder="Username">
+                </div>
+                <div class="input-group">
+                    <label class="item" for="name">Name:</label>
+                    <input class="item form-input" type="text" name="name" id="name" placeholder="Name">
+                </div>
+                <div class="input-group">
+                    <label class="item" for="password">Password:</label>
+                    <input class="item form-input" type="password" name="password" id="password" placeholder="Password">
+                </div>
+                <div class="input-group">
+                    <label class="item" for="confirmPassowrd">Confirm Password: </label>
+                    <input class="item form-input" type="password" name="confirmPassowrd" id="confirmPassword" placeholder="Password">
+                </div>
+                <div class="input-group">
+                    <label class="item" for="email">Email: </label>
+                    <input class="item form-input" type="text" name="email" id="email" placeholder="buisness.example@gmail.com">
+                </div>
+                <div class="input-group">
+                    <label class="item" for="province">Province</label>
+                    <select class="item form-input" name="province" id="province">
+                        <option value="disabled" selected disabled>Select Province</option>
+                        <option value="alberta">Alberta</option>
+                        <option value="bc">British Columbia</option>
+                        <option value="manitoba">Manitoba</option>
+                        <option value="nt">Northwest Territories</option>
+                        <option value="nunavut">Nunavut</option>
+                        <option value="nflL">Newfoundland and Labrador</option>
+                        <option value="newBrunswick">New Brunswick</option>
+                        <option value="novaScotia">Nova Scotia</option>
+                        <option value="ontario">Ontario</option>
+                        <option value="pei">Prince Edward Island</option>
+                        <option value="quebec">Quebec</option>
+                        <option value="yukon">Yukon</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label class="item" for="tos">Accept Terms</label>
+                    <input class="item form-input" type="checkbox" name="tos" id="tos">
+                </div>
+                <div class="input-group">
+                    <button class="btn" type="button" id="submitBTN">Sumbit</button>
+                    <button class="btn" type="reset" id="resetBTN">Reset</button>
+                </div>
+        </form>
+        <div class="errorMessage"></div>
+    </div>
+    <script type="module" src="../js/assignment5.js"></script>
+</body>
+</html>
