@@ -1,6 +1,8 @@
 // @ts-check
 
 import { getElementByIdOrThrow } from "./helper";
+// arstarstarsoteinarosietn~
+
 
 /**
  * Gets a random color
