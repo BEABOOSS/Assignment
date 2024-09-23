@@ -35,7 +35,8 @@ function formValidation (username, name, password, confirmPassword, email, provi
         // subject to change
         const selectedIndex = province.selectedIndex;
         const selectedItem = province[selectedIndex].textContent; 
-        div.insertAdjacentHTML( "afterend" , displaySuccessOutput(usernameObj.value, nameObj.value, emailObj.value, selectedItem));
+        div.insertAdjacentHTML("afterend" ,displaySuccessOutput(usernameObj.value, nameObj.value, emailObj.value, selectedItem));
+
     } else {
         
         if(!usernameObj.success){
@@ -99,11 +100,13 @@ try {
     /** @type {HTMLDivElement} */
     const resultOutput = getElementByIdOrThrow("result");
 
-    form.addEventListener("click", () => formValidation(userName, name, password, confirmPassword, email, province, tos, resultOutput))
+    form.addEventListener("click", () => {
+        formValidation(userName, name, password, confirmPassword, email, province, tos, resultOutput)})
     // sumbit.addEventListener("submit", (event) => {
     //     event.preventDefault();
     //     formValidation(userName, name, password, confirmPassword, email, province, tos, div)
     // })
+
     reset.addEventListener("click", () => resetForm(userName, name, password, confirmPassword, email, province, tos))
 
 
@@ -152,9 +155,11 @@ try {
 
     
 } catch (error) {
-    console.error(error);
-    
+    console.error(error);    
 }
+
+
+
 
 
 // 

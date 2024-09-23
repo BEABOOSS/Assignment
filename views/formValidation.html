@@ -15,7 +15,7 @@
 </head>
 <body>
     <div id="usermsg"></div>
-    <form name="myform" action="" method="">
+    <form name="myform" action="" method="post">
         <ul>
             <li>Email: <input type="text" name="email" id="email" maxlength="20" /></li>
             <li>Age: <input type="text" name="age" id="age" maxlength="10" /></li>
@@ -40,6 +40,10 @@
                     id="blue" 
                     value="Blue" 
                 />Blue<br >
+            </li>
+            <li>
+                <label for="colorSelect">Pick A Color:</label>
+                <input type="color" name="colorSelect" id="colorSelect">
             </li>
             <li>
                 <input type="button" name="submitform" id="submitform" value="Click To Submit" />
