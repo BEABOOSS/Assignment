@@ -93,3 +93,35 @@ export function capitalizeFirstLetter(string){
 export function assertNonNull(thing){
 	return /** @type {Exclude<T, null>} */ (thing);
 }
+
+
+/**
+ * check string if it corresponds with the regex pattern
+ * @param {string | null} value
+ * @param {number} [minLen = 0]
+ * @returns {{success: boolean, value: string | null}}  An object containing:
+ *   - success: true if regex was successful, false otherwise
+ *   - value: the value after regex if successful, null otherwise.
+ */
+export function checkEmail(value, minLen = 0){
+	const regExp = new RegExp("((?!\\.)[\\w\\-_.]*[^.])(@\\w+)(\\.\\w+(\\.\\w+)?[^.\\W])");
+	if (typeof value !== "string") {
+		return { success: false, value: null };
+	}
+
+	const trimmedValue = value.trim();
+	if (trimmedValue === "") {
+		return { success: false, value: null };
+	}
+
+	const valueLength = value.length;
+	if (valueLength < minLen) {
+		return { success: false, value: null };
+	}
+
+	if (regExp.test(value)) {
+		return { success: true, value: value };
+	} else {
+		return { success: false, value: null };
+	}
+}

@@ -1,6 +1,6 @@
 
 
-import { checkString, getElementByIdOrThrow, tryParseInt } from "./helper";
+import { checkEmail, getElementByIdOrThrow, tryParseInt } from "./helper";
 
 class SurveyResult {
     
@@ -35,7 +35,7 @@ function validateForm() {
     //get fields from myform by the name attribute
     
 
-	const email = checkString(getElementByIdOrThrow("email").value);
+	const email = checkEmail(getElementByIdOrThrow("email").value);
 	const age = tryParseInt(getElementByIdOrThrow("age").value);
     const outputDiv = getElementByIdOrThrow("usermsg");
     const colorSelect = getElementByIdOrThrow("colorSelect").value;
@@ -180,4 +180,3 @@ function getCookie(c_name) {
 //     }
 //     return null;
 // }
-
