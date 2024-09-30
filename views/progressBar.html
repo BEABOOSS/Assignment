@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/progressBar.css">
+    <title>Progress Bar</title>
+</head>
+<body>
+    <h1>Progress Bar</h1>
+    <div class="container">
+
+        <div class="race">
+            <div id="statusbarA" class="statusbar">
+                <div id="statusA" class="status">
+                </div>
+            </div>
+            <div id="statusbarB" class="statusbar">
+                <!-- <div class="sbt">
+                    <p>vehicleB</p>                    
+                </div> -->
+                <div id="statusB" class="status">
+                    Vehicle B
+                </div>
+            </div>
+            <div id="statusbarC" class="statusbar">
+                <div id="statusC" class="status">
+                    <p>vehicleC</p>
+                </div>
+            </div>
+            <div id="statusbarD" class="statusbar">
+                <div id="statusD" class="status">
+                    <p>vehicleD</p>
+                </div>
+            </div>
+            <div id="statusbarE" class="statusbar">
+                <div id="statusE" class="status">
+                    <p>vehicleE</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="input">
+
+            <label for="vehicleList">Which Vehicle will finish first: </label>
+            <select name="vehicleList" id="vehicleList">
+                <option selected disabled>Choose:</option>
+                <option value="vehicleA">vehicleA</option>
+                <option value="vehicleB">vehicleB</option>
+                <option value="vehicleC">vehicleC</option>
+                <option value="vehicleD">vehicleD</option>
+                <option value="vehicleE">vehicleE</option>
+            </select>
+
+            <input id="startRace" type="button" value="Start Race"/>
+        </div>
+    </div>
+
+
+    <script type="module" src="../js/progressBar.js"></script>
+
+</body>
+</html>

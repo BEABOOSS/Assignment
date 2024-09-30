@@ -35,6 +35,7 @@ function validateForm() {
     //get fields from myform by the name attribute
     
 
+    
 	const email = checkEmail(getElementByIdOrThrow("email").value);
 	const age = tryParseInt(getElementByIdOrThrow("age").value);
     const outputDiv = getElementByIdOrThrow("usermsg");

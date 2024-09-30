@@ -158,11 +158,6 @@ try {
     console.error(error);    
 }
 
-
-
-
-
-// 
 /**
  * check string if it corresponds with the regex pattern
  * @param {string | null} value

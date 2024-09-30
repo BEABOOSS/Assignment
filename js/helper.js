@@ -66,7 +66,6 @@ export function checkString(value, minLen = 0) {
 export function getElementByIdOrThrow(id) {
     const element = /** @type {T | null} */ (document.getElementById(id));
     if (!element) {
-	// Wow
         throw new Error(`Element doesn't exist: "${id}"`);
     }
     return element;
