@@ -77,9 +77,6 @@ ul {
 .input-group > button { 
 	grid-row: 1;
 }
-.input-group > input[type=checkbox] {
-	
-}
 
 .input-group-Error {
 	padding: 1%;

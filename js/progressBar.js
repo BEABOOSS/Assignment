@@ -95,3 +95,18 @@ const button = getElementByIdOrThrow("startRace");
 button.addEventListener("click", () => {
     race();
 })
+// TESTING
+
+function trigger() {
+    /** @type {HTMLDivElement} */
+    const bar = getElementByIdOrThrow("statusA");
+
+    if (interval){
+        return;
+    }
+
+    if (bar.offsetWidth >= 500){
+        bar.style.width = "0";
+        return;
+    }
+}

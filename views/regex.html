@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style.css">
+    <title>Regex Input</title>
+</head>
+<body>
+
+    <div>
+        <div>
+            <label for="paragraph">Enter a sentence:</label>
+            <textarea name="paragraph" id="paragraph"></textarea>
+        </div>
+        <div>
+            <label for="findWord">Word to replace:</label>
+            <input type="text" name="findWord" id="findWord">  
+        </div>
+        <div>
+            <label for="replaceWord">Word to replace with:</label>
+            <input type="text" name="replaceWord" id="replaceWord">
+        </div>
+
+        <div>
+            <input type="button" value="Replace" id="btnReplace">
+        </div>
+
+        <p>Note: Word replace is case sensitive and pay attention if you put any spaces in the input.</p>
+    </div>       
+
+    <script  type="module" src="../js/regex.js"></script>
+</body>
+</html>

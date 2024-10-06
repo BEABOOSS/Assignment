@@ -18,7 +18,7 @@ export function tryParseInt(value) {
 	}
 
 	const parsedValue = Number(trimmedValue);
-	// @ts-expect-error
+	 
 	if (Number.isInteger(parsedValue)) {
 		return { success: true, value: parsedValue };
 	} else {
@@ -34,7 +34,7 @@ export function tryParseInt(value) {
  *   - value: the value after regex if successful, null otherwise.
  */
 export function checkString(value, minLen = 0) {
-	const regExp = new RegExp("^[a-zA-zs]+$");
+	const regExp = new RegExp("^[a-zA-zs,. ]+$");
 	if (typeof value !== "string") {
 		return { success: false, value: null };
 	}
@@ -50,6 +50,8 @@ export function checkString(value, minLen = 0) {
 	}
 
 	if (regExp.test(value)) {
+		//console.log("testing"+value);
+		
 		return { success: true, value: value };
 	} else {
 		return { success: false, value: null };
@@ -59,9 +61,9 @@ export function checkString(value, minLen = 0) {
 /**
  * Generic version of getElementByIdOrThrow.
  * @template {HTMLElement} T
- * @param {string} id - The ID of the element to find.
- * @returns {T} The found element.
- * @throws {Error} If the element is not found.
+ * @param {string} id ID of the element to find
+ * @returns {T} returns element
+ * @throws {Error} If element is not found
  */
 export function getElementByIdOrThrow(id) {
     const element = /** @type {T | null} */ (document.getElementById(id));
