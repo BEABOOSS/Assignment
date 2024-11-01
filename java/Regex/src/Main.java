@@ -5,8 +5,10 @@ import java.util.regex.Pattern;
 public class Main{
     public static void main(String[] args){
         // First Problem
-        String url = "https://www.example.com/page/arst/arstars/ar";
+        String url = "https://example.com/page/arst/arstars/ar";
         String extractedDomain = extractDomain(url);
+        System.out.println(url);
+
         System.out.printf("%nFirst Problem%n%s%n", extractedDomain);
 
         // Second Problem
@@ -16,6 +18,8 @@ public class Main{
         List<String> extractedList = extractHashtag(hashTag, pattern);
         System.out.printf("%nSecond Problem%n");
         extractedList.forEach(x -> System.out.printf("%s%n", x));
+//        extractedList.forEach(System.out::println);
+
 
         // Third Problem
         String lastWord = "The quick brown fox jumps over the lazy dog";

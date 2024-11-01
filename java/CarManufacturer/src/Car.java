@@ -11,14 +11,14 @@ public class Car {
     }
     public void start(){
         if(isRunning()){
-            System.out.println("Car is already running.");
+            System.out.printf("Car is already running.%n");
         } else {
             isRunning = true;
         }
     }
     public void stop(){
         if(!isRunning()){
-            System.out.println("Car is already stop.");
+            System.out.printf("Car is already stop.%n");
         } else {
             isRunning = false;
         }
