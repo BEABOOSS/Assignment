@@ -22,8 +22,7 @@ public class Main {
         itemList.add(new Item("Bag of Lemons", 3.50f, 3));
         itemList.add(new Item("Bag of Chips", 6.99f, 12));
 
-//        workers.forEach(x -> System.out.println(x.getUsername()));
-//        itemList.forEach(x -> System.out.printf("%nName: %s%nItemId:%d%nItem price: %.2f%nItem quantity: %d%n", x.getItemName(), x.getItemId(), x.getPrice(), x.getQuantity()));
+//        listItems(itemList);
         if(login(workers)){
             mainMenu(itemList);
         };
@@ -113,7 +112,7 @@ public class Main {
 
 
         System.out.printf("%n%1$s Adding Item %1$s", "------------");
-        itemList.forEach(x -> System.out.printf("%nName: %s%nItemId:%d%nItem price: %.2f%nItem quantity: %d%n", x.getItemName(), x.getItemId(), x.getPrice(), x.getQuantity()));
+        listItems(itemList);
 
         while(true){
             System.out.printf("%nEnter Item Name: ");
@@ -134,7 +133,7 @@ public class Main {
             if (quantity.equals("x")){
                 break;
             }
-    
+
             try {
                 matcher = stringVerification.matcher(name);
                 float itemPrice = Float.parseFloat(price.trim());
@@ -178,8 +177,37 @@ public class Main {
     }
 
     public static ArrayList<Item>  purchaseItem(ArrayList<Item> itemList){
+        Scanner sc = new Scanner(System.in);
+
+        System.out.printf("%n%1$s Purchasing Item %1$s", "------------");
+        itemList.forEach(x -> System.out.printf("%nName: %s%nItemId:%d%nItem price: %.2f%nItem quantity: %d%n", x.getItemName(), x.getItemId(), x.getPrice(), x.getQuantity()));
+//        while(true){
+//
+//        }
+
 
         return itemList;
+    }
+
+    public static void listItems(ArrayList<Item> itemList) {
+        final int ITEM_NAME_WIDTH = 20;  // Fixed width for item names
+
+        // Print each item with fixed-width formatting
+        for (int i = 0; i < itemList.size(); i++) {
+            Item item = itemList.get(i);
+
+            // Format the number with padding
+            String itemNumber = String.format("%d. ", i + 1);
+
+            // Format the name with fixed width
+            String itemName = item.getItemName();
+            if (itemName.length() > ITEM_NAME_WIDTH) {
+                itemName = itemName.substring(0, ITEM_NAME_WIDTH - 3) + "...";
+            }
+
+            // Print the formatted line
+            System.out.printf("%-3s%-" + ITEM_NAME_WIDTH + "s$%.2f%n", itemNumber, itemName, item.getPrice());
+        }
     }
 
 }
@@ -207,12 +235,12 @@ public class Main {
 // +---- Add new items
 // +---- Purchase items
 // +---- Exit
-// --- Add new items ( default has 7 items)
-// ----- Display current items
-// ----- Prompt user to register new items
-// ------ (only stops showing prompt until 'x' is entered)
+// +--- Add new items ( default has 7 items)
+// +----- Display current items
+// +----- Prompt user to register new items
+// +------ (only stops showing prompt until 'x' is entered)
 // --- Purchase items
-// ----- Display all items available
+// +---- Display all items available
 // ----- Prompt user for item to be purchased (item number)
 // ------ Prompt user for the quantity
 // ------ Display the subtotal ( item price * quantity)
@@ -220,3 +248,5 @@ public class Main {
 // -------- yes, then Display grand total
 // ---------- then ask to return to main menu
 // -------- no, then go to line 33
+
+
