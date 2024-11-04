@@ -43,8 +43,9 @@ public class Main {
             }
             System.out.printf("%n%s", i == numOfTries ? "------------Main Menu------------": "");
             System.out.printf("%nEnter your Cashier number (%d tries left):%n", i);
-            cashierNumInput = sc.next();
-            sc.nextLine();
+            cashierNumInput = sc.nextLine();
+            System.out.println(","+cashierNumInput+",");
+            System.out.println(","+cashierNumInput.trim()+",");
 
             try {
                 int cashierInput = Integer.parseInt(cashierNumInput);
@@ -81,13 +82,11 @@ public class Main {
 
             System.out.printf("%n%1$s Main Menu %1$s", "------------");
             System.out.printf("%n1-Add new item%n2-Purchase item%nX-Exit%n:");
-            menuSelect = sc.next();
-            sc.nextLine();
+            menuSelect = sc.nextLine().trim();
 
             switch (menuSelect){
                 case "1":
                     itemList = addItem(itemList);
-                    itemList.forEach(x -> System.out.printf("%nName: %s%nItemId:%d%nItem price: %.2f%nItem quantity: %d%n", x.getItemName(), x.getItemId(), x.getPrice(), x.getQuantity()));
                     break;
                 case "2":
                     itemList = purchaseItem(itemList);
@@ -111,25 +110,24 @@ public class Main {
         Matcher matcher;
 
 
-        System.out.printf("%n%1$s Adding Item %1$s", "------------");
+        System.out.printf("%n%1$s Adding Item %1$s%n", "------------");
         listItems(itemList);
 
         while(true){
             System.out.printf("%nEnter Item Name: ");
-            String name = sc.nextLine();
-            //sc.nextLine();
+            String name = sc.nextLine().trim();
             if(name.equals("x")){
                 break;
             }
 
             System.out.printf("%nEnter Item Price: ");
-            String price = sc.nextLine().replace(",", ".");
+            String price = sc.nextLine().replace(",", ".").trim();
             if(price.equals("x")){
                 break;
             }
 
             System.out.printf("%nEnter Item Quantity: ");
-            String quantity = sc.nextLine();
+            String quantity = sc.nextLine().trim();
             if (quantity.equals("x")){
                 break;
             }
@@ -179,9 +177,12 @@ public class Main {
     public static ArrayList<Item>  purchaseItem(ArrayList<Item> itemList){
         Scanner sc = new Scanner(System.in);
 
-        System.out.printf("%n%1$s Purchasing Item %1$s", "------------");
-        itemList.forEach(x -> System.out.printf("%nName: %s%nItemId:%d%nItem price: %.2f%nItem quantity: %d%n", x.getItemName(), x.getItemId(), x.getPrice(), x.getQuantity()));
 //        while(true){
+//            System.out.printf("%n%1$s Purchasing Item %1$s%n", "------------");
+//            listItems(itemList);
+//            System.out.printf("%nWhich item would like to purchase");
+//
+//
 //
 //        }
 
@@ -190,8 +191,10 @@ public class Main {
     }
 
     public static void listItems(ArrayList<Item> itemList) {
-        final int ITEM_NAME_WIDTH = 20;  // Fixed width for item names
+        final int ITEM_NAME_WIDTH = 15;  // Fixed width for item names
 
+        // display's current format
+        System.out.printf(" %-3s%-" + ITEM_NAME_WIDTH + "s%s %s%n", "Id", "Item name", "Price", "Quantity");
         // Print each item with fixed-width formatting
         for (int i = 0; i < itemList.size(); i++) {
             Item item = itemList.get(i);
@@ -204,9 +207,8 @@ public class Main {
             if (itemName.length() > ITEM_NAME_WIDTH) {
                 itemName = itemName.substring(0, ITEM_NAME_WIDTH - 3) + "...";
             }
-
             // Print the formatted line
-            System.out.printf("%-3s%-" + ITEM_NAME_WIDTH + "s$%.2f%n", itemNumber, itemName, item.getPrice());
+            System.out.printf(" %-3s%-" + ITEM_NAME_WIDTH + "s$%.2f x%d%n", itemNumber, itemName, item.getPrice(), item.getQuantity());
         }
     }
 
@@ -248,5 +250,3 @@ public class Main {
 // -------- yes, then Display grand total
 // ---------- then ask to return to main menu
 // -------- no, then go to line 33
-
-
