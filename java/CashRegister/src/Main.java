@@ -21,6 +21,7 @@ public class Main {
         itemList.add(new Item("Loaf of Bread", 2.50f, 35));
         itemList.add(new Item("Bag of Lemons", 3.50f, 3));
         itemList.add(new Item("Bag of Chips", 6.99f, 12));
+        itemList.add(new Item("Cheese", 6.50f, 0));
 
 //        listItems(itemList);
         if(login(workers)){
@@ -176,39 +177,112 @@ public class Main {
 
     public static ArrayList<Item>  purchaseItem(ArrayList<Item> itemList){
         Scanner sc = new Scanner(System.in);
+        float grandTotal = 0;
+        int amountOfItems = 0;
 
-//        while(true){
-//            System.out.printf("%n%1$s Purchasing Item %1$s%n", "------------");
-//            listItems(itemList);
-//            System.out.printf("%nWhich item would like to purchase");
-//
-//
-//
-//        }
+
+
+        while(true){
+            try{
+
+                System.out.printf("%n%1$s Purchasing Item %1$s%n", "------------");
+                listItems(itemList);
+                System.out.printf("%nWhich item would like to purchase: (item id)%nEnter 'x' at any point to exit%n:");
+                String uID = sc.nextLine().trim();
+                if(uID.equals("x")){
+                    break;
+                }
+
+                int itemId = Integer.parseInt(uID); // converts string to int
+
+                // searches if id exist
+                if(doesItemExist(itemList, itemId)){
+                    System.out.println("This item is available");
+                } else {
+                    throw new IllegalArgumentException("This item 'id' does not exist you sure you entered the right one?");
+                }
+
+                System.out.printf("%nHow many would you like? (number)%n:");
+                String quantity = sc.nextLine().trim();
+                if(quantity.equals("x")){
+                    break;
+                }
+
+                int itemQuantity = Integer.parseInt(quantity);
+
+                if(itemQuantity < 0) {
+                    throw new IllegalArgumentException("Item quantity needs to be greater than 0");
+                }
+
+                float subtotal = 0;
+                // checks if quantity is available
+                for (Item item : itemList) {
+                    if (item.getItemId() == itemId) {
+                        if (itemQuantity >= item.getQuantity()) {
+                            throw new IllegalArgumentException("Requested amount is greater than what is available currently");
+                        } else {
+                            subtotal += itemQuantity * item.getPrice();
+                            System.out.printf("%nWould you like to purchase %d %s%nFor a total of $%.2f (y/n)%n:", itemQuantity, item.getItemName(), subtotal);
+                            String confirmPurchase = sc.nextLine().trim();
+                            if(confirmPurchase.equals("y")){
+                                item.setQuantity(itemQuantity);
+                                grandTotal += subtotal;
+                                amountOfItems += itemQuantity;
+                                int inx = itemList.indexOf(item);
+                                itemList.set(inx, item);
+                            } else {
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                System.out.printf("%nWould you like to continue shopping? (y/n)%n:");
+                String continueShopping = sc.nextLine().trim();
+                if(continueShopping.equals("n")){
+                    System.out.printf("Total of all items bought: $%.2f%nAmount of Items bought: %d", grandTotal, amountOfItems);
+                    break;
+                }
+
+
+
+            } catch (NumberFormatException e){
+                System.out.println("Error: Please enter a valid number");
+            } catch(IllegalArgumentException e){
+                System.out.println("Error: "+e.getMessage());
+            }
+
+
+
+        }
 
 
         return itemList;
     }
 
+    public static boolean doesItemExist(ArrayList<Item> itemList, int itemId){
+        for(Item item : itemList){
+            if(item.getItemId() == itemId){
+                return true;
+            }
+        }
+        return false;
+    };
+
     public static void listItems(ArrayList<Item> itemList) {
         final int ITEM_NAME_WIDTH = 15;  // Fixed width for item names
 
         // display's current format
-        System.out.printf(" %-3s%-" + ITEM_NAME_WIDTH + "s%s %s%n", "Id", "Item name", "Price", "Quantity");
+        System.out.printf(" %-4s%-" + ITEM_NAME_WIDTH + "s%s %s%n", "Id", "Item name", "Price", "Quantity");
         // Print each item with fixed-width formatting
-        for (int i = 0; i < itemList.size(); i++) {
-            Item item = itemList.get(i);
-
-            // Format the number with padding
-            String itemNumber = String.format("%d. ", i + 1);
-
+        for (Item item : itemList) {
             // Format the name with fixed width
             String itemName = item.getItemName();
             if (itemName.length() > ITEM_NAME_WIDTH) {
                 itemName = itemName.substring(0, ITEM_NAME_WIDTH - 3) + "...";
             }
             // Print the formatted line
-            System.out.printf(" %-3s%-" + ITEM_NAME_WIDTH + "s$%.2f x%d%n", itemNumber, itemName, item.getPrice(), item.getQuantity());
+            System.out.printf(" %-4s%-" + ITEM_NAME_WIDTH + "s$%.2f x%d%n", item.getItemId(), itemName, item.getPrice(), item.getQuantity());
         }
     }
 
@@ -243,9 +317,9 @@ public class Main {
 // +------ (only stops showing prompt until 'x' is entered)
 // --- Purchase items
 // +---- Display all items available
-// ----- Prompt user for item to be purchased (item number)
-// ------ Prompt user for the quantity
-// ------ Display the subtotal ( item price * quantity)
+// +---- Prompt user for item to be purchased (item number)
+// +----- Prompt user for the quantity
+// +----- Display the subtotal ( item price * quantity)
 // ------ Ask if user is finished
 // -------- yes, then Display grand total
 // ---------- then ask to return to main menu

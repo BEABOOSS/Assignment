@@ -26,14 +26,15 @@ public class Item{
     }
 
     public void setPrice(float price) {
-        Price = price;
+        this.Price = price;
     }
 
     public int getQuantity() {
         return Quantity;
     }
 
+    // amount will be removed from the current stock
     public void setQuantity(int quantity) {
-        Quantity = quantity;
+        this.Quantity -= quantity;
     }
 }
