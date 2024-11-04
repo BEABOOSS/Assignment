@@ -5,8 +5,17 @@ import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
 public class Main {
-    // do not know if this is a good idea ¯\_(ツ)_/¯
-//    public static String menuSelect = "";
+
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
+    public static final String ANSI_WHITE = "\u001B[37m";
+    public static final String ANSI_PURPLE_BACKGROUND = "\u001B[45m";
+    public static final String YesNo = String.format("(" + ANSI_GREEN +"y" + ANSI_WHITE + "/" + ANSI_RED + "n" + ANSI_RESET + ")");
+    public static final String LINE_BACKGROUND_PURPLE = String.format(ANSI_PURPLE_BACKGROUND + "------------" + ANSI_RESET);
+
     public static void main(String[] args){
 
         ArrayList<Cashier> workers = new ArrayList<Cashier>();
@@ -39,26 +48,24 @@ public class Main {
 
         for(int i=3; i >= 0; i--){
             if(i == 0){
-                System.out.printf("%nYOU HAVE EXCEEDED THE NUMBER OF TRIES, ARE YOU SURE YOU HAVE THE RIGHT NUMBER?%n");
+                System.out.printf(ANSI_YELLOW + "%nYOU HAVE EXCEEDED THE NUMBER OF TRIES, ARE YOU SURE YOU HAVE THE RIGHT NUMBER?%n" + ANSI_RESET);
                 break;
             }
             System.out.printf("%n%s", i == numOfTries ? "------------Main Menu------------": "");
-            System.out.printf("%nEnter your Cashier number (%d tries left):%n", i);
-            cashierNumInput = sc.nextLine();
-            System.out.println(","+cashierNumInput+",");
-            System.out.println(","+cashierNumInput.trim()+",");
+            System.out.printf("%nEnter your Cashier number ("+ ANSI_YELLOW+ "%d tries left"+ANSI_RESET +"):%n", i);
+            cashierNumInput = sc.nextLine().trim();
 
             try {
                 int cashierInput = Integer.parseInt(cashierNumInput);
 
                 if(cashierInput < 0 || cashierInput > 500){
-                    throw new IllegalArgumentException("Cashier number need to be between 0 and 500");
+                    throw new IllegalArgumentException(ANSI_YELLOW + "Cashier number need to be between 0 and 500" + ANSI_RESET);
                 }
 
                 for(Cashier j : workers){
                     if(j.getCashierNumber() == cashierInput){
                         userFound = true;
-                        System.out.printf("%nWELCOME BACK %s.%n", j.getUsername());
+                        System.out.printf(ANSI_GREEN + "%nWELCOME BACK %s.%n" + ANSI_RESET, j.getUsername());
                         break;
                     }
                 }
@@ -66,9 +73,9 @@ public class Main {
                     break;
                 }
             } catch (NumberFormatException e ){
-                System.out.println("Error: Please enter a valid number");
+                System.out.println(ANSI_RED + "Error: Please enter a valid number" + ANSI_RESET);
             } catch (IllegalArgumentException e){
-                System.out.println("Error: " + e.getMessage());
+                System.out.println(ANSI_RED +"Error: " + e.getMessage() + ANSI_RESET);
             }
 
         }
@@ -81,7 +88,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         while (!exitMenu){
 
-            System.out.printf("%n%1$s Main Menu %1$s", "------------");
+            System.out.printf("%n%1$s Main Menu %1$s", LINE_BACKGROUND_PURPLE);
             System.out.printf("%n1-Add new item%n2-Purchase item%nX-Exit%n:");
             menuSelect = sc.nextLine().trim();
 
@@ -96,7 +103,7 @@ public class Main {
                     exitMenu = true;
                     break;
                 default:
-                    System.out.printf("%nError please select one the available menus");
+                    System.out.printf(ANSI_YELLOW + "%nError please select one the available menus" + ANSI_RESET);
                     break;
             }
         }
@@ -111,7 +118,7 @@ public class Main {
         Matcher matcher;
 
 
-        System.out.printf("%n%1$s Adding Item %1$s%n", "------------");
+        System.out.printf("%n%1$s Adding Item %1$s%n", LINE_BACKGROUND_PURPLE);
         listItems(itemList);
 
         while(true){
@@ -140,23 +147,23 @@ public class Main {
 
 
                 if(!matcher.matches()){
-                    throw new IllegalArgumentException("Item name must only contain letters, numbers, and spaces, and start with a letter");
+                    throw new IllegalArgumentException(ANSI_RED + "Item name must only contain letters, numbers, and spaces, and start with a letter" + ANSI_RESET);
                 }
                 String itemName = name;
 
                 if(itemPrice < 0.00f){
-                    throw new IllegalArgumentException("Item price cannot be negative");
+                    throw new IllegalArgumentException(ANSI_RED + "Item price cannot be negative" + ANSI_RESET);
                 }
                 if(itemQuantity < 0 || itemQuantity > 200){
-                    throw new IllegalArgumentException("Item quantity cannot be negative or greater than 200");
+                    throw new IllegalArgumentException(ANSI_RED + "Item quantity cannot be negative or greater than 200" + ANSI_RESET);
                 }
 
 
-                System.out.printf("%nNew Item Added: ");
+                System.out.printf(ANSI_GREEN + "%nNew Item Added: " + ANSI_RESET);
                 System.out.printf("%nItem name: %1$s%nItem price: %2$.2f%nItem quantity: %3$d", itemName, itemPrice, itemQuantity);
                 itemList.add(new Item(itemName, itemPrice, itemQuantity));
 
-                System.out.printf("%n%nWould you like to add another item? (y/n): %n");
+                System.out.printf("%n%nWould you like to add another item? %s: %n", YesNo);
                 menuSelect = sc.nextLine().trim().toLowerCase();
 
                 if(menuSelect.equals("n")){
@@ -164,9 +171,9 @@ public class Main {
                 }
 
             } catch (NumberFormatException e){
-                System.out.println("Error: Please enter a valid number");
+                System.out.println(ANSI_RED + "Error: Please enter a valid number" + ANSI_RESET);
             } catch (IllegalArgumentException e) {
-                System.out.println("Error: " + e.getMessage());
+                System.out.println(ANSI_RED + "Error: " + e.getMessage() + ANSI_RESET);
             }
 
         }
@@ -197,9 +204,9 @@ public class Main {
 
                 // searches if id exist
                 if(doesItemExist(itemList, itemId)){
-                    System.out.println("This item is available");
+                    System.out.println(ANSI_GREEN + "This item is available" + ANSI_RESET);
                 } else {
-                    throw new IllegalArgumentException("This item 'id' does not exist you sure you entered the right one?");
+                    throw new IllegalArgumentException(ANSI_YELLOW + "This item 'id' does not exist you sure you entered the right one?"+ ANSI_RESET);
                 }
 
                 System.out.printf("%nHow many would you like? (number)%n:");
@@ -211,7 +218,7 @@ public class Main {
                 int itemQuantity = Integer.parseInt(quantity);
 
                 if(itemQuantity < 0) {
-                    throw new IllegalArgumentException("Item quantity needs to be greater than 0");
+                    throw new IllegalArgumentException(ANSI_RED + "Item quantity needs to be greater than 0"+ANSI_RESET);
                 }
 
                 float subtotal = 0;
@@ -219,10 +226,10 @@ public class Main {
                 for (Item item : itemList) {
                     if (item.getItemId() == itemId) {
                         if (itemQuantity >= item.getQuantity()) {
-                            throw new IllegalArgumentException("Requested amount is greater than what is available currently");
+                            throw new IllegalArgumentException(ANSI_RED + "Requested amount is greater than what is available currently"+ANSI_RESET);
                         } else {
                             subtotal += itemQuantity * item.getPrice();
-                            System.out.printf("%nWould you like to purchase %d %s%nFor a total of $%.2f (y/n)%n:", itemQuantity, item.getItemName(), subtotal);
+                            System.out.printf("%nWould you like to purchase %d %s%nFor a total of $%.2f %s%n:", itemQuantity, item.getItemName(), subtotal, YesNo);
                             String confirmPurchase = sc.nextLine().trim();
                             if(confirmPurchase.equals("y")){
                                 item.setQuantity(itemQuantity);
@@ -237,7 +244,7 @@ public class Main {
                     }
                 }
 
-                System.out.printf("%nWould you like to continue shopping? (y/n)%n:");
+                System.out.printf("%nWould you like to continue shopping? %s%n:", YesNo);
                 String continueShopping = sc.nextLine().trim();
                 if(continueShopping.equals("n")){
                     System.out.printf("Total of all items bought: $%.2f%nAmount of Items bought: %d", grandTotal, amountOfItems);
@@ -247,9 +254,9 @@ public class Main {
 
 
             } catch (NumberFormatException e){
-                System.out.println("Error: Please enter a valid number");
+                System.out.println(ANSI_RED + "Error: Please enter a valid number"+ ANSI_RESET);
             } catch(IllegalArgumentException e){
-                System.out.println("Error: "+e.getMessage());
+                System.out.println(ANSI_RED + "Error: "+e.getMessage() + ANSI_RESET);
             }
 
 
@@ -273,16 +280,19 @@ public class Main {
         final int ITEM_NAME_WIDTH = 15;  // Fixed width for item names
 
         // display's current format
-        System.out.printf(" %-4s%-" + ITEM_NAME_WIDTH + "s%s %s%n", "Id", "Item name", "Price", "Quantity");
+        System.out.printf("%n %-4s%-" + ITEM_NAME_WIDTH + "s%s %s%n%n", "Id", "Item name", "Price", "Quantity");
         // Print each item with fixed-width formatting
+        int quantity = 0;
         for (Item item : itemList) {
+            quantity = item.getQuantity();
             // Format the name with fixed width
             String itemName = item.getItemName();
+            String itemQuantity = String.format((quantity <= 3? ANSI_YELLOW : ANSI_WHITE)+"%d"+ANSI_RESET, quantity);
             if (itemName.length() > ITEM_NAME_WIDTH) {
                 itemName = itemName.substring(0, ITEM_NAME_WIDTH - 3) + "...";
             }
             // Print the formatted line
-            System.out.printf(" %-4s%-" + ITEM_NAME_WIDTH + "s$%.2f x%d%n", item.getItemId(), itemName, item.getPrice(), item.getQuantity());
+            System.out.printf(" %-4s%-" + ITEM_NAME_WIDTH + "s$%.2f x%s%n", item.getItemId(), itemName, item.getPrice(), itemQuantity);
         }
     }
 
@@ -324,3 +334,5 @@ public class Main {
 // -------- yes, then Display grand total
 // ---------- then ask to return to main menu
 // -------- no, then go to line 33
+
+// Finish adding colors 
