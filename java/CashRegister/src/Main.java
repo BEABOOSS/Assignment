@@ -1,14 +1,12 @@
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 public class Main {
-    //Cashier first = new Cashier(123, "james");
-//    Cashier second = new Cashier(124, "bob");
-//    Cashier third = new Cashier(125, "burt");
-//    Cashier fourth = new Cashier(126, "ken");
-
-
-
+    // do not know if this is a good idea ¯\_(ツ)_/¯
+//    public static String menuSelect = "";
     public static void main(String[] args){
 
         ArrayList<Cashier> workers = new ArrayList<Cashier>();
@@ -17,12 +15,21 @@ public class Main {
         workers.add( new Cashier("burt"));
         workers.add( new Cashier("ken"));
 
+
+        ArrayList<Item> itemList = new ArrayList<Item>();
+        itemList.add(new Item("Water Melon", 5.99f, 12));
+        itemList.add(new Item("Loaf of Bread", 2.50f, 35));
+        itemList.add(new Item("Bag of Lemons", 3.50f, 3));
+        itemList.add(new Item("Bag of Chips", 6.99f, 12));
+
 //        workers.forEach(x -> System.out.println(x.getUsername()));
-//        mainMenu();
+//        itemList.forEach(x -> System.out.printf("%nName: %s%nItemId:%d%nItem price: %.2f%nItem quantity: %d%n", x.getItemName(), x.getItemId(), x.getPrice(), x.getQuantity()));
         if(login(workers)){
-            mainMenu();
+            mainMenu(itemList);
         };
+
     }
+
     // Noo need to touch this
     public static boolean login(ArrayList<Cashier> workers){
         Scanner sc = new Scanner(System.in);
@@ -38,6 +45,7 @@ public class Main {
             System.out.printf("%n%s", i == numOfTries ? "------------Main Menu------------": "");
             System.out.printf("%nEnter your Cashier number (%d tries left):%n", i);
             cashierNumInput = sc.next();
+            sc.nextLine();
 
             try {
                 int cashierInput = Integer.parseInt(cashierNumInput);
@@ -66,8 +74,7 @@ public class Main {
         return userFound;
     }
 
-    public static void mainMenu(){
-
+    public static void mainMenu(ArrayList<Item> itemList){
         String menuSelect = "";
         boolean exitMenu = false;
         Scanner sc = new Scanner(System.in);
@@ -76,13 +83,15 @@ public class Main {
             System.out.printf("%n%1$s Main Menu %1$s", "------------");
             System.out.printf("%n1-Add new item%n2-Purchase item%nX-Exit%n:");
             menuSelect = sc.next();
+            sc.nextLine();
 
             switch (menuSelect){
                 case "1":
-                    addItem();
+                    itemList = addItem(itemList);
+                    itemList.forEach(x -> System.out.printf("%nName: %s%nItemId:%d%nItem price: %.2f%nItem quantity: %d%n", x.getItemName(), x.getItemId(), x.getPrice(), x.getQuantity()));
                     break;
                 case "2":
-                    purchaseItem();
+                    itemList = purchaseItem(itemList);
                     break;
                 case "x":
                     exitMenu = true;
@@ -95,12 +104,82 @@ public class Main {
 
     }
 
-    public static void addItem(){
+    public static ArrayList<Item> addItem(ArrayList<Item> itemList){
+        Scanner sc = new Scanner(System.in);
+        sc.useLocale(Locale.US);
+        Pattern stringVerification = Pattern.compile("^[A-Za-z][\\w\\s]+$");
+        String menuSelect = "";
+        Matcher matcher;
 
+
+        System.out.printf("%n%1$s Adding Item %1$s", "------------");
+        itemList.forEach(x -> System.out.printf("%nName: %s%nItemId:%d%nItem price: %.2f%nItem quantity: %d%n", x.getItemName(), x.getItemId(), x.getPrice(), x.getQuantity()));
+
+        while(true){
+            System.out.printf("%nEnter Item Name: ");
+            String name = sc.nextLine();
+            //sc.nextLine();
+            if(name.equals("x")){
+                break;
+            }
+
+            System.out.printf("%nEnter Item Price: ");
+            String price = sc.nextLine().replace(",", ".");
+            if(price.equals("x")){
+                break;
+            }
+
+            System.out.printf("%nEnter Item Quantity: ");
+            String quantity = sc.nextLine();
+            if (quantity.equals("x")){
+                break;
+            }
+    
+            try {
+                matcher = stringVerification.matcher(name);
+                float itemPrice = Float.parseFloat(price.trim());
+                int itemQuantity = Integer.parseInt(quantity);
+
+
+                if(!matcher.matches()){
+                    throw new IllegalArgumentException("Item name must only contain letters, numbers, and spaces, and start with a letter");
+                }
+                String itemName = name;
+
+                if(itemPrice < 0.00f){
+                    throw new IllegalArgumentException("Item price cannot be negative");
+                }
+                if(itemQuantity < 0 || itemQuantity > 200){
+                    throw new IllegalArgumentException("Item quantity cannot be negative or greater than 200");
+                }
+
+
+                System.out.printf("%nNew Item Added: ");
+                System.out.printf("%nItem name: %1$s%nItem price: %2$.2f%nItem quantity: %3$d", itemName, itemPrice, itemQuantity);
+                itemList.add(new Item(itemName, itemPrice, itemQuantity));
+
+                System.out.printf("%n%nWould you like to add another item? (y/n): %n");
+                menuSelect = sc.nextLine().trim().toLowerCase();
+
+                if(menuSelect.equals("n")){
+                    return itemList;
+                }
+
+            } catch (NumberFormatException e){
+                System.out.println("Error: Please enter a valid number");
+            } catch (IllegalArgumentException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+
+        }
+
+
+        return itemList;
     }
 
-    public static void  purchaseItem(){
+    public static ArrayList<Item>  purchaseItem(ArrayList<Item> itemList){
 
+        return itemList;
     }
 
 }
@@ -110,24 +189,24 @@ public class Main {
 
 
 // 1- User base
-// Cashier (10 user)
-// -- Id
-// -- username
+// + Cashier (10 user)
+// +-- Id
+// +-- username
 
-// Items
-// -- item Id
-// -- item name
-// -- item price
-// -- item quantity
+// + Items
+// +-- item Id
+// +-- item name
+// +-- item price
+// +-- item quantity
 
 // 2- Application flow
-// /-- User login (Cashier number/id) * Done
-// /---- If correct greet user *insert username* ->> main menu
-// /---- else if user failed 3 times give msg 'are you sure'
-// -- Main menu (items/info)
-// ---- Add new items
-// ---- Purchase items
-// ---- Exit
+// +-- User login (Cashier number/id) * Done
+// +---- If correct greet user *insert username* ->> main menu
+// +---- else if user failed 3 times give msg 'are you sure'
+// +-- Main menu (items/info)
+// +---- Add new items
+// +---- Purchase items
+// +---- Exit
 // --- Add new items ( default has 7 items)
 // ----- Display current items
 // ----- Prompt user to register new items

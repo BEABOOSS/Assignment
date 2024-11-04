@@ -2,10 +2,10 @@ public class Item{
     private final int ItemId;
     private static int nextItemId = 100;
     private final String ItemName;
-    private double Price;
+    private float Price;
     private int Quantity;
 
-    public Item(String itemName, double price, int quantity){
+    public Item(String itemName, float price, int quantity){
         this.ItemId = nextItemId;
         nextItemId++;
         this.ItemName = itemName;
@@ -21,11 +21,11 @@ public class Item{
         return ItemName;
     }
 
-    public double getPrice() {
+    public float getPrice() {
         return Price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(float price) {
         Price = price;
     }
 
