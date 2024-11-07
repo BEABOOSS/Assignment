@@ -15,7 +15,7 @@ public class Main {
     public static final String LINE_MENU = "------------";
 
     public static void main(String[] args){
-    
+
         // id's start at 100 and increase by one
         ArrayList<Cashier> workers = new ArrayList<Cashier>();
         workers.add( new Cashier("James"));
