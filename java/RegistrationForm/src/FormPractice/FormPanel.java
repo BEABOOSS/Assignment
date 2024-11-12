@@ -9,6 +9,7 @@ public class FormPanel extends JPanel {
     public FormPanel(){
         JTextField textField;
         JLabel labelPrint = new JLabel();
+//        Dimension inputSize = new Dimension(210, 30);
         Dimension inputSize = new Dimension(210, 30);
 
         Font font = new Font("Sans-serif", Font.PLAIN, 20);
@@ -28,18 +29,38 @@ public class FormPanel extends JPanel {
         //endregion
 
         //region Name Input
-        JPanel namePan = new JPanel(new BorderLayout(35, 0));
+//        JPanel namePan = new JPanel(new BorderLayout(35, 0));
+        JPanel namePan = new JPanel();
+        GroupLayout test = new GroupLayout(namePan);
+        namePan.setLayout(test);
+        test.setAutoCreateGaps(true);
+        test.setAutoCreateContainerGaps(true);
+
         JLabel nameLab = new JLabel("Name:");
         JTextField nameInp = new JTextField();
-        namePan.setBounds(0, 10, 380, 40);
+//        namePan.setBounds(0, 10, 380, 40);
 
         nameInp.setPreferredSize(inputSize);
         nameInp.setFont(font);
         nameInp.setBorder(inputBorder);
 //        nameInp.setBackground(Color.);
 
-        namePan.add(nameLab, BorderLayout.WEST);
-        namePan.add(nameInp, BorderLayout.EAST);
+//        namePan.add(nameLab, BorderLayout.WEST);
+//        namePan.add(nameInp, BorderLayout.EAST);
+        test.setHorizontalGroup(
+                test.createSequentialGroup()
+                        .addComponent(nameLab)
+                        //.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED, GroupLayout.PREFERRED_SIZE, Short.MAX_VALUE)
+                        .addComponent(nameInp)
+        );
+        test.setVerticalGroup(
+                test.createSequentialGroup()
+                        .addGroup(test.createParallelGroup(GroupLayout.Alignment.BASELINE))
+                        .addComponent(nameLab)
+                        .addComponent(nameInp)
+        );
+
+
         //endregion
 
         //region Email
