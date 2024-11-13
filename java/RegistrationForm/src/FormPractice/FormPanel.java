@@ -7,15 +7,11 @@ import java.awt.*;
 public class FormPanel extends JPanel {
 
     public FormPanel(){
-        JTextField textField;
-        JLabel labelPrint = new JLabel();
-//        Dimension inputSize = new Dimension(210, 30);
         Dimension inputSize = new Dimension(210, 30);
-
-        Font font = new Font("Sans-serif", Font.PLAIN, 20);
-        Font titleFont = new Font("Sans-serif", Font.BOLD, 13);
+        Font font = new Font("Sans-serif", Font.PLAIN, 15);
+        Font titleFont = new Font("Sans-serif", Font.BOLD, 20);
         Border inputBorder = BorderFactory.createLineBorder(Color.black);
-
+        int inputCols = 12;
 
         //region Title
         JPanel titlePan = new JPanel(new BorderLayout(100, 0));
@@ -29,94 +25,101 @@ public class FormPanel extends JPanel {
         //endregion
 
         //region Name Input
-//        JPanel namePan = new JPanel(new BorderLayout(35, 0));
-        JPanel namePan = new JPanel();
-        GroupLayout test = new GroupLayout(namePan);
-        namePan.setLayout(test);
-        test.setAutoCreateGaps(true);
-        test.setAutoCreateContainerGaps(true);
-
+        JPanel namePan = new JPanel(new SpringLayout());
         JLabel nameLab = new JLabel("Name:");
-        JTextField nameInp = new JTextField();
-//        namePan.setBounds(0, 10, 380, 40);
-
+        namePan.add(nameLab);
+        JTextField nameInp = new JTextField(inputCols);
         nameInp.setPreferredSize(inputSize);
-        nameInp.setFont(font);
+        nameLab.setLabelFor(nameInp);
+        namePan.add(nameInp);
+        nameLab.setFont(font);
         nameInp.setBorder(inputBorder);
-//        nameInp.setBackground(Color.);
-
-//        namePan.add(nameLab, BorderLayout.WEST);
-//        namePan.add(nameInp, BorderLayout.EAST);
-        test.setHorizontalGroup(
-                test.createSequentialGroup()
-                        .addComponent(nameLab)
-                        //.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED, GroupLayout.PREFERRED_SIZE, Short.MAX_VALUE)
-                        .addComponent(nameInp)
-        );
-        test.setVerticalGroup(
-                test.createSequentialGroup()
-                        .addGroup(test.createParallelGroup(GroupLayout.Alignment.BASELINE))
-                        .addComponent(nameLab)
-                        .addComponent(nameInp)
-        );
-
-
+        SpringUtilities.makeCompactGrid(namePan, 1, 2, 6, 6, 60, 6);
         //endregion
 
         //region Email
+        JPanel emailPan = new JPanel(new SpringLayout());
         JLabel emailLab = new JLabel("Email Address:");
-        JPanel emailPan = new JPanel(new BorderLayout(11, 0));
-        JTextField emailInp = new JTextField();
-        emailPan.setBounds(0, 20, 380, 40);
-
+        emailPan.add(emailLab);
+        JTextField emailInp = new JTextField(inputCols);
         emailInp.setPreferredSize(inputSize);
-        emailInp.setFont(font);
+        emailLab.setLabelFor(emailInp);
+        emailPan.add(emailInp);
+        emailLab.setFont(font);
         emailInp.setBorder(inputBorder);
-//        nameInp.setBackground(Color.);
+        SpringUtilities.makeCompactGrid(emailPan, 1, 2, 6, 6, 30, 6);
 
-        emailPan.add(emailLab, BorderLayout.WEST);
-        emailPan.add(emailInp, BorderLayout.EAST);
         //endregion
 
         //region Password And Confirm Pwd
+        JPanel pwdPan = new JPanel(new SpringLayout());
         JLabel passwordLab = new JLabel("Create Password:");
-        JLabel confirmPasLab = new JLabel("Confirm Password:");
-
-        JPanel pwdPan = new JPanel(new BorderLayout(2, 0));
-        JPanel cPwdPan = new JPanel(new BorderLayout(0, 0));
-
-        JTextField passwordInp = new JTextField();
-        JTextField cPasswordInp = new JTextField();
-        pwdPan.setBounds(0, 30, 380, 40);
-        pwdPan.setBorder(inputBorder);
-        cPwdPan.setBounds(0, 40, 380, 40);
-
+        pwdPan.add(passwordLab);
+        JTextField passwordInp = new JTextField(inputCols);
+        pwdPan.add(passwordInp);
+        passwordLab.setLabelFor(passwordInp);
         passwordInp.setPreferredSize(inputSize);
-        cPasswordInp.setPreferredSize(inputSize);
-        passwordInp.setFont(font);
-        cPasswordInp.setFont(font);
-        passwordInp.setBorder(inputBorder);
-        cPasswordInp.setBorder(inputBorder);
-//        nameInp.setBackground(Color.);
+        passwordLab.setFont(font);
+        SpringUtilities.makeCompactGrid(pwdPan, 1, 2, 6, 6, 30, 6);
 
-        pwdPan.add(passwordLab, BorderLayout.WEST);
-        pwdPan.add(passwordInp, BorderLayout.EAST);
-
-        cPwdPan.add(confirmPasLab, BorderLayout.WEST);
-        cPwdPan.add(cPasswordInp, BorderLayout.EAST);
+        JPanel cPwdPan = new JPanel(new SpringLayout());
+        JLabel cPwdLab = new JLabel("Confirm Password:");
+        cPwdPan.add(cPwdLab);
+        JTextField cPwdInp = new JTextField(inputCols);
+        cPwdLab.setLabelFor(cPwdInp);
+        cPwdPan.add(cPwdInp);
+        cPwdLab.setPreferredSize(inputSize);
+        cPwdLab.setFont(font);
+        cPwdInp.setBorder(inputBorder);
+        SpringUtilities.makeCompactGrid(cPwdPan, 1, 2, 6, 6, 30, 6);
 
         //endregion
 
         //region Gender
+        JPanel genderPan = new JPanel(new SpringLayout());
         JLabel genderLab = new JLabel("Gender:");
+        genderLab.setFont(font);
+        ButtonGroup gender = new ButtonGroup();
+        genderPan.add(genderLab);
+        JRadioButton male = new JRadioButton("Male");
+        genderPan.add(male);
+        gender.add(male);
+        male.setFont(font);
+        JRadioButton female = new JRadioButton("Female");
+        genderPan.add(female);
+        gender.add(female);
+        female.setFont(font);
+
+        SpringUtilities.makeCompactGrid(genderPan, 1, 3, 6, 6, 30, 6);
+
         //endregion
 
         //region Address
+        JPanel addressPan = new JPanel(new SpringLayout());
         JLabel addressLab = new JLabel("Address:");
+        addressPan.add(addressLab);
+        addressLab.setFont(font);
+        JTextField addressInp = new JTextField(inputCols);
+        addressPan.add(addressInp);
+        addressInp.setFont(font);
+        addressInp.setPreferredSize(inputSize);
+        addressInp.setBorder(inputBorder);
+        addressLab.setLabelFor(addressInp);
+
+        addressPan.add(addressLab);
+        addressPan.add(addressInp);
+
+        SpringUtilities.makeCompactGrid(addressPan, 1, 2, 6, 6, 30, 6);
+
         //endregion
 
         //region State
+        JPanel statePan = new JPanel(new SpringLayout());
         JLabel stateLab = new JLabel("State:");
+        stateLab.setFont(font);
+        statePan.add(stateLab);
+        String[] provinces = {""};
+        JComboBox<String> combo = new JComboBox<String>();
         //endregion
 
         //region Country
@@ -127,36 +130,34 @@ public class FormPanel extends JPanel {
         JLabel phoneNumLab = new JLabel("Phone Num:");
         // endregion
 
-
-
         //region Example
-        JLabel lab = new JLabel("Name: ");
-        textField = new JTextField(20);
-        JButton btn = new JButton("Save");
-
-        btn.addActionListener(e -> {
-            btn.setEnabled(false);
-            lab.setText("Processing...");
-
-            SwingWorker<Integer, Void> worker = new SwingWorker<Integer, Void>() {
-                @Override
-                protected Integer doInBackground() throws Exception {
-                    return 0;
-                }
-
-                @Override
-                protected void done(){
-                    try {
-                        throw new NumberFormatException("tarstarstarstar");
-
-                    } catch (Exception ex){
-                        System.out.printf(ex.getMessage());
-                    }
-
-                }
-            };
-            worker.execute();
-        });
+//        JLabel lab = new JLabel("Name: ");
+//        textField = new JTextField(20);
+//        JButton btn = new JButton("Save");
+//
+//        btn.addActionListener(e -> {
+//            btn.setEnabled(false);
+//            lab.setText("Processing...");
+//
+//            SwingWorker<Integer, Void> worker = new SwingWorker<Integer, Void>() {
+//                @Override
+//                protected Integer doInBackground() throws Exception {
+//                    return 0;
+//                }
+//
+//                @Override
+//                protected void done(){
+//                    try {
+//                        throw new NumberFormatException("tarstarstarstar");
+//
+//                    } catch (Exception ex){
+//                        System.out.printf(ex.getMessage());
+//                    }
+//
+//                }
+//            };
+//            worker.execute();
+//        });
         //endregion
 
 
@@ -165,9 +166,15 @@ public class FormPanel extends JPanel {
         this.add(titlePan);
         //
         this.add(namePan);
+        //
         this.add(emailPan);
+        //
         this.add(pwdPan);
         this.add(cPwdPan);
+        //
+        this.add(genderPan);
+        //
+        this.add(addressPan);
 
 
 
