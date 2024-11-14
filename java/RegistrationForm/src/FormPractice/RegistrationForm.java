@@ -5,7 +5,6 @@ import java.awt.*;
 
 public class RegistrationForm extends JFrame {
     public RegistrationForm(){
-//        DefaultFrame frame = new DefaultFrame();
         JPanel frame = new JPanel();
         FormPanel formPanel = new FormPanel();
 
