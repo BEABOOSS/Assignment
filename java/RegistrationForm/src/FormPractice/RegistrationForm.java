@@ -29,3 +29,12 @@ public class RegistrationForm extends JFrame {
 
     }
 }
+
+// Questions for Teacher
+// Q.1 what layout manager did you use to have everything so well lined up
+
+// Q.2 I am not entirely sure how you where able
+// to change the layout of the combo box?
+// did you make a custom class for it?
+
+

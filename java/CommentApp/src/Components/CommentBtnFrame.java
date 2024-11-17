@@ -1,91 +1,75 @@
 package Components;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.HashMap;
 
 public class CommentBtnFrame extends JFrame {
-    JFrame frame = this;
-    private HashMap<String, String> userInformation;
-    private boolean isLoggedIn = false;
+
+    private final HashMap<String, String> userInformation;
+    static final String frameTitle = "Write Comment";
+
+
     public CommentBtnFrame(){
-        frame.setVisible(true);
+
+        final JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new GridBagLayout());
+        this.add(mainPanel);
+        this.setVisible(true);
         userInformation = new HashMap<>();
         userInformation.put("warren", "monkey");
         userInformation.put("bob", "apple");
 
-        frame.setTitle("Assignment");
-        frame.setSize(400, 200);
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // region settings
+        this.setTitle(frameTitle);
+        this.setSize(400, 300);
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        //endregion
 
+        final JButton commentBtn = new JButton("Comment");
+        mainPanel.add(commentBtn);
 
-        JButton comment = new JButton();
-        comment.setText("Comment");
-        comment.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String username = "";
-                int response = JOptionPane.showConfirmDialog(null, "Would you like to write a comment?", "Confirmation", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                if(response == JOptionPane.OK_OPTION){
-                    do {
-                        username = checkUsername();
-                        if(!username.isEmpty()){
-                            if(checkPassword()){
-                                isLoggedIn = true;
-                                frame.setVisible(false);
-                                frame.set
-
-                            }
-                        }
-                    } while(!isLoggedIn);
-
-                    if(isLoggedIn){
-                        CommentFrame subFrame = new CommentFrame(username);
-                        subFrame.setVisible(true);
-
-
-                        if (!subFrame.isActive()){
-                            System.out.println("UUrrm this is awkward");
-                            isLoggedIn = false;
-                            frame.setVisible(true);
-
-                        }
-                    }
-
-                }
-
-
-            }
-        });
-
-        frame.add(comment);
-
+        commentBtn.addActionListener(e -> commentLogin());
     }
 
-    private String checkUsername(){
+    private void commentLogin() {
         String username = "";
-        username = JOptionPane.showInputDialog(null, "Enter Your Username: ", "Username", JOptionPane.QUESTION_MESSAGE);
-        for (String i : userInformation.keySet()){
-            if(username.equals(i)){
-                return i;
+        int response = JOptionPane.showConfirmDialog(null, "Would you like to write a comment?", "Confirmation", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if(response == JOptionPane.OK_OPTION){
+            username = checkCredentials();
+            if(!username.isEmpty()){
+                CommentPanel cPan = new CommentPanel(username, CommentBtnFrame.this);
+                CommentBtnFrame.super.setVisible(false);
+                CommentBtnFrame.super.setEnabled(false);
+                cPan.setVisible(true);
             }
+
+
         }
-        return "";
+
     }
 
-    private boolean checkPassword(){
+    private String checkCredentials(){
+        String username ="";
         String password = "";
-        do{
-            password = JOptionPane.showInputDialog(null, "Enter Your Password: ", "Password", JOptionPane.QUESTION_MESSAGE);
-            for (String i : userInformation.keySet()){
-                if (password.equals(userInformation.get(i))){
-                    return true;
+        String correctPassword = "";
+        while(true){
+            username = JOptionPane.showInputDialog(null, "Enter Your Username: ", "Username", JOptionPane.QUESTION_MESSAGE);
+            if(userInformation.containsKey(username)){
+                password = JOptionPane.showInputDialog(null, "Enter Your Password: ", "Password", JOptionPane.QUESTION_MESSAGE);
+                correctPassword = userInformation.get(username);
+                if(password.equals(correctPassword)){
+                    return username;
                 }
             }
-            JOptionPane.showMessageDialog(null, "Wrong password", "Wrong Password", JOptionPane.WARNING_MESSAGE);
-        } while (true);
-    }
+
+        }
+    };
 }
 

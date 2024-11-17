@@ -136,6 +136,7 @@ public class FormPanel extends JPanel {
         String[] provinces = {"Alberta", "British Columbia", "Manitoba", "New Brunswick", "Newfoundland and Labrador", "Nova Scotia", "Ontario", "Prince Edward Island", "Quebec", "Saskatchewan", "Yukon", "Nunavut", "Northwest Territories"};
 
         JComboBox<String> combo = new JComboBox<String>(provinces);
+
         statePan.add(combo);
         SpringUtilities.makeCompactGrid(statePan, 1, 2, 6, 0, 30, 0);
 
@@ -231,6 +232,7 @@ public class FormPanel extends JPanel {
                 addressInp.setText("");
                 combo.setSelectedIndex(0);
                 countryInp.setText("");
+                phoneNumInp.setText("");
             }
         });
 
