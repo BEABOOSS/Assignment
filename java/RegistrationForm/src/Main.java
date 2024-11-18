@@ -1,8 +1,8 @@
 
-
-import FormPractice.RegistrationForm;
+import FormPractice.FormBody;
 
 import javax.swing.*;
+
 
 public class Main {
 
@@ -20,7 +20,7 @@ public class Main {
         //creating and showing this application's GUI.
 
         SwingUtilities.invokeLater(() -> {
-            RegistrationForm form = new RegistrationForm();
+            FormBody form = new FormBody();
         });
 
 

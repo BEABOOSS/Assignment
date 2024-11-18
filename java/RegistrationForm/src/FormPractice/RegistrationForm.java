@@ -6,28 +6,16 @@ import javax.swing.text.MaskFormatter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.sql.SQLOutput;
 import java.text.ParseException;
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class RegistrationForm extends JFrame {
+public class RegistrationForm extends JPanel {
     private JFormattedTextField pNumField;
-    static final String frameTitle = "New Account Registration";
     private static final String NOT_SELECTED = "Did not specify";
     public RegistrationForm(){
-
-        //region settings
-        this.setSize(400, 500);
-        this.setResizable(false);
-        this.setVisible(true);
-        this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setTitle(frameTitle);
         this.setLayout(new BorderLayout());
-        //endregion
 
         //region constant
         final int INPUT_COLS = 10;
@@ -47,6 +35,10 @@ public class RegistrationForm extends JFrame {
         final JPanel centerPan = new JPanel();
         final JPanel bottomPan = new JPanel();
         final GroupLayout layout = new GroupLayout(centerPan);
+        topPan.setOpaque(false);
+        centerPan.setOpaque(false);
+        bottomPan.setOpaque(false);
+
         centerPan.setLayout(layout);
         layout.setAutoCreateGaps(true);
         layout.setAutoCreateContainerGaps(true);
@@ -148,7 +140,6 @@ public class RegistrationForm extends JFrame {
 
         //region Phone Number
         JLabel pNumLab = new JLabel("Phone Num: ");
-        //JTextField pNumField = new JTextField(INPUT_COLS);
 
         try {
             MaskFormatter phoneNumFormat = new MaskFormatter("### ### ####");
@@ -240,6 +231,7 @@ public class RegistrationForm extends JFrame {
         );
         //endregion
 
+
         //region vertical alignment
         layout.setVerticalGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
@@ -278,6 +270,7 @@ public class RegistrationForm extends JFrame {
         this.add(topPan, BorderLayout.NORTH);
         this.add(centerPan, BorderLayout.CENTER);
         this.add(bottomPan, BorderLayout.SOUTH);
+
     }
 
     private static String nameValidation(String name) {

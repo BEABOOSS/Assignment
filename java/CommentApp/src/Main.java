@@ -1,10 +1,6 @@
 import Components.CommentBtnFrame;
-import Components.CommentPanel;
-//import Components.CommentFrame;
-//import Components.DisplayFrame;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class Main {
 
