@@ -1,4 +1,4 @@
-package FormPractice;
+package views;
 
 import javax.swing.*;
 import java.awt.*;
@@ -7,7 +7,6 @@ public class FormBody extends JFrame {
     static final String frameTitle = "New Account Registration";
     public FormBody(){
         //region settings
-//            this.setSize(140, 39);
             this.setResizable(false);
             this.setVisible(true);
             this.setLocationRelativeTo(null);
@@ -20,9 +19,6 @@ public class FormBody extends JFrame {
         MenuBar bar = new MenuBar(FormBody.this, form);
         this.add(form, BorderLayout.CENTER);
         this.pack();
-
-
-
 
     }
 }

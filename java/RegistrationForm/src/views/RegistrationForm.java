@@ -1,19 +1,17 @@
-package FormPractice;
+package views;
+
+import controllers.FormController;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.text.MaskFormatter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.text.ParseException;
-import java.util.Arrays;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class RegistrationForm extends JPanel {
     private JFormattedTextField pNumField;
-    private static final String NOT_SELECTED = "Did not specify";
+    private FormController formController;
     public RegistrationForm(){
         this.setLayout(new BorderLayout());
 
@@ -163,38 +161,14 @@ public class RegistrationForm extends JPanel {
         //endregion
 
         //region EventListener
-        submitBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    System.out.printf("%nName: %s", nameValidation(nameField.getText()));
-                    System.out.printf("%nEmail: %s", emailValidation(emailField.getText()));
-                    System.out.printf("%nPassword: %s", passwordValidation(pwdField.getPassword(), cPwdField.getPassword()));
-                    System.out.printf("%nGender: %s", getGenderSelected(male, female));
-                    System.out.printf("%nState: %s", getSelectedState(stateCBox));
-                    System.out.printf("%nStreet: %s", addressValidation(addrField.getText()));
-                    System.out.printf("%nCountry: %s", countryValidation(countryField.getText()));
-                    System.out.printf("%nPhone Number: %s", phoneNumberValidation(pNumField.getText()));
-
-                } catch (IllegalArgumentException ex) {
-                    System.out.printf("%nError: %s", ex.getMessage());
-                }
-            }
+        submitBtn.addActionListener((ActionEvent e)-> {
+            formController = new FormController();
+            formController.submitForm(nameField, emailField, pwdField, cPwdField, male, female, stateCBox, addrField, countryField, pNumField);
         });
 
-        clearBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                nameField.setText("");
-                emailField.setText("");
-                pwdField.setText("");
-                cPwdField.setText("");
-                genderGrBtn.clearSelection();
-                addrField.setText("");
-                stateCBox.setSelectedIndex(0);
-                countryField.setText("");
-                pNumField.setValue(null);
-            }
+        clearBtn.addActionListener((ActionEvent e) -> {
+            formController = new FormController();
+            formController.clearForm(nameField, emailField, pwdField, cPwdField, genderGrBtn, stateCBox, addrField, countryField, pNumField);
         });
         //endregion
 
@@ -272,92 +246,11 @@ public class RegistrationForm extends JPanel {
         this.add(bottomPan, BorderLayout.SOUTH);
 
     }
-
-    private static String nameValidation(String name) {
-        Pattern stringVerification = Pattern.compile("[A-Za-z]+");
-        Matcher matcher = stringVerification.matcher(name);
-        if(!matcher.matches()){
-            throw new IllegalArgumentException("Field 'Name' was not entered correctly");
-        }
-        return name;
-    }
-
-    private static String emailValidation(String email) {
-        Pattern stringVerification = Pattern.compile("(?!\\.)[\\w\\-_.]*[^.](@\\w+)(\\.\\w+(\\.\\w+)?[^.\\W])");
-        Matcher matcher = stringVerification.matcher(email);
-        if(!matcher.matches()){
-            throw new IllegalArgumentException("Field 'email' was not entered correctly");
-        }
-        return email;
-    }
-
-    private static String passwordValidation(char[] password, char[] cPassword) {
-        final int MINIMUM_LENGTH = 5;
-        if(password.length < MINIMUM_LENGTH){
-            throw new IllegalArgumentException("Field 'password' please enter a longer password. To ensure that your information is not stolen.");
-        } else if(!Arrays.equals(password, cPassword)){
-            throw new IllegalArgumentException("Fields 'password' do not match. Please ensure that you enter the same password in both fields");
-        }
-
-        return  Arrays.toString(password).replaceAll("\\[|]|,|\\s", "");
-    }
-
-    private static String getGenderSelected(JRadioButton male, JRadioButton female){
-        if (male.isSelected()){
-            return "Male";
-        }
-        if (female.isSelected()) {
-            return "Female";
-        }
-
-        return NOT_SELECTED;
-
-    }
-
-    private static String getSelectedState(JComboBox<String> box){
-        final int NOT_ALLOWED = 0;
-        int selectedIndex = box.getSelectedIndex();
-        if(selectedIndex != NOT_ALLOWED){
-            return (String)box.getSelectedItem();
-        }
-        return NOT_SELECTED;
-    }
-
-    private static String addressValidation(String address) {
-        Pattern addrPattern = Pattern.compile("[\\w\\s]+,[\\w\\s]+");
-        String addr = address.trim();
-        Matcher matcher = addrPattern.matcher(addr);
-        if(addr.isEmpty()){
-            return NOT_SELECTED;
-        } else if(!matcher.matches()) {
-            throw new IllegalArgumentException("Field 'address' please use the required pattern shown in the tooltip");
-        }
-
-        return addr;
-    }
-
-    private static String countryValidation(String country) {
-        Pattern stringVerification = Pattern.compile("[A-Za-z]+");
-        String countryTrimmed = country.trim();
-        Matcher matcher = stringVerification.matcher(countryTrimmed);
-        if(countryTrimmed.isEmpty()){
-            return NOT_SELECTED;
-        } else if(!matcher.matches()){
-            throw new IllegalArgumentException("Field 'country' was not entered correctly");
-        }
-        return countryTrimmed;
-    }
-
-    private static String phoneNumberValidation(String phoneNumber) {
-        String trimmed = phoneNumber.trim();
-        if (trimmed.isEmpty()){
-            return NOT_SELECTED;
-        } else if(trimmed.length() != 12) {
-            throw new IllegalArgumentException("Field 'phone number' please enter your full phone number");
-        }
-        return trimmed;
-    }
 }
+
+
+
+
 
 
 
