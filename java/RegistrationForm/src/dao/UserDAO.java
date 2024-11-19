@@ -10,7 +10,9 @@ import java.sql.*;
  */
 public class UserDAO {
     //MysqlDataSource dataSource = new MysqlDataSource();
-    private final String DB_URL = "jdbc:mysql://localhost:3306/registration";
+    private static final String DATABASE_NAME = "registration";
+    private static final String TABLE_NAME = "users";
+    private final String DB_URL = "jdbc:mysql://localhost:3306/" + DATABASE_NAME;
     private final String DB_USERNAME = "root";
     private final String DB_PASSWORD = "";
 
@@ -21,7 +23,8 @@ public class UserDAO {
      */
     public void saveUser(User user){
 
-        String sqlQuery = "INSERT INTO users VALUES(null, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        String sqlQuery = "INSERT INTO "+ TABLE_NAME +" VALUES(null, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try(Connection conn = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
             PreparedStatement preState =  conn.prepareStatement(sqlQuery);
@@ -57,8 +60,8 @@ public class UserDAO {
 
     private void createTable(){
 
-        String sqlQuery = "CREATE TABLE users "
-        + "(user_ID INTEGER PRIMARY KEY AUTO_INCREMENT,"
+        String sqlQuery = "CREATE TABLE "+  TABLE_NAME
+        + " (user_ID INTEGER PRIMARY KEY AUTO_INCREMENT,"
         + " username VARCHAR(120),"
         + " email VARCHAR(120),"
         + " password VARCHAR(120),"
@@ -86,7 +89,7 @@ public class UserDAO {
     }
 
     private boolean doesUserTableExist(){
-        String sqlQuery = "SELECT * FROM users";
+        String sqlQuery = "SELECT * FROM "+TABLE_NAME;
 
         try(Connection conn = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
             PreparedStatement preState =  conn.prepareStatement(sqlQuery);
