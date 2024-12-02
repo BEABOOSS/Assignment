@@ -1,12 +1,14 @@
 package views;
 
 import controllers.FormController;
+import model.States;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.text.MaskFormatter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.io.Console;
 import java.text.ParseException;
 
 public class RegistrationForm extends JPanel {
@@ -118,10 +120,15 @@ public class RegistrationForm extends JPanel {
         addrField.setBorder(inputBorder);
         //endregion
 
-        //region State
-        JLabel stateLab = new JLabel("State: ");
-        String[] provinces = {"Select a State", "Alberta", "British Columbia", "Manitoba", "New Brunswick", "Newfoundland and Labrador", "Nova Scotia", "Ontario", "Prince Edward Island", "Quebec", "Saskatchewan", "Yukon", "Nunavut", "Northwest Territories"};
-        JComboBox<String> stateCBox = new JComboBox<String>(provinces);
+        //region States
+        JLabel stateLab = new JLabel("States: ");
+        //String[] provinces = {"Select a States", "Alberta", "British Columbia", "Manitoba", "New Brunswick", "Newfoundland and Labrador", "Nova Scotia", "Ontario", "Prince Edward Island", "Quebec", "Saskatchewan", "Yukon", "Nunavut", "Northwest Territories"};
+        JComboBox<String> stateCBox = new JComboBox<String>();
+        for(States state : States.values()){
+            stateCBox.addItem(state.getDisplayName());
+        }
+
+
         stateCBox.setFont(font);
         stateLab.setFont(font);
 

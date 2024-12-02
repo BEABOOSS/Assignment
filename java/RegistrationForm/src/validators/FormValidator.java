@@ -1,5 +1,8 @@
 package validators;
 
+import model.Gender;
+import model.States;
+
 import javax.swing.*;
 import java.util.Arrays;
 import java.util.regex.Matcher;
@@ -76,15 +79,15 @@ public class FormValidator {
      * @param female female field
      * @return phone Number
      */
-    public static String getGenderSelected(JRadioButton male, JRadioButton female){
+    public static Gender getGenderSelected(JRadioButton male, JRadioButton female){
         if (male.isSelected()){
-            return "Male";
+            return Gender.Male;
         }
         if (female.isSelected()) {
-            return "Female";
+            return Gender.Female;
         }
 
-        return NOT_SPECIFIED;
+        return Gender.Other;
 
     }
 
@@ -96,9 +99,9 @@ public class FormValidator {
         final int NOT_ALLOWED = 0;
         int selectedIndex = box.getSelectedIndex();
         if(selectedIndex != NOT_ALLOWED){
-            return (String)box.getSelectedItem();
+            return States.getName((String)box.getSelectedItem());
         }
-        return NOT_SPECIFIED;
+        return null;
     }
 
     /**

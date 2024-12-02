@@ -1,4 +1,6 @@
 
+import dao.UserDAO;
+import model.User;
 import views.FormBody;
 
 import javax.swing.*;
@@ -26,7 +28,10 @@ public class Main {
         //creating and showing this application's GUI.
 
         SwingUtilities.invokeLater(() -> {
-            FormBody form = new FormBody();
+//            FormBody form = new FormBody();
+            // go fix both Gender and states to work with integers instead of strings
+            UserDAO can = new UserDAO();
+            can.createTable();
         });
 
     }

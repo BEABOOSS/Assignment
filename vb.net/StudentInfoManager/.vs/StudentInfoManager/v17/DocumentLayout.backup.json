@@ -1,0 +1,69 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\wamp64\\www\\Assignment\\vb.net\\StudentInfoManager\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9E87AF47-8E6B-43FE-A20E-C5C60F0203C9}|StudentInfoManager.vbproj|c:\\wamp64\\www\\assignment\\vb.net\\studentinfomanager\\student.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{9E87AF47-8E6B-43FE-A20E-C5C60F0203C9}|StudentInfoManager.vbproj|solutionrelative:student.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E87AF47-8E6B-43FE-A20E-C5C60F0203C9}|StudentInfoManager.vbproj|c:\\wamp64\\www\\assignment\\vb.net\\studentinfomanager\\studentlist.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{9E87AF47-8E6B-43FE-A20E-C5C60F0203C9}|StudentInfoManager.vbproj|solutionrelative:studentlist.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E87AF47-8E6B-43FE-A20E-C5C60F0203C9}|StudentInfoManager.vbproj|c:\\wamp64\\www\\assignment\\vb.net\\studentinfomanager\\program.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{9E87AF47-8E6B-43FE-A20E-C5C60F0203C9}|StudentInfoManager.vbproj|solutionrelative:program.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Student.vb",
+              "DocumentMoniker": "C:\\wamp64\\www\\Assignment\\vb.net\\StudentInfoManager\\Student.vb",
+              "RelativeDocumentMoniker": "Student.vb",
+              "ToolTip": "C:\\wamp64\\www\\Assignment\\vb.net\\StudentInfoManager\\Student.vb",
+              "RelativeToolTip": "Student.vb",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-11-28T03:19:53.46Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "StudentList.vb",
+              "DocumentMoniker": "C:\\wamp64\\www\\Assignment\\vb.net\\StudentInfoManager\\StudentList.vb",
+              "RelativeDocumentMoniker": "StudentList.vb",
+              "ToolTip": "C:\\wamp64\\www\\Assignment\\vb.net\\StudentInfoManager\\StudentList.vb",
+              "RelativeToolTip": "StudentList.vb",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-11-25T00:17:10.024Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.vb",
+              "DocumentMoniker": "C:\\wamp64\\www\\Assignment\\vb.net\\StudentInfoManager\\Program.vb",
+              "RelativeDocumentMoniker": "Program.vb",
+              "ToolTip": "C:\\wamp64\\www\\Assignment\\vb.net\\StudentInfoManager\\Program.vb",
+              "RelativeToolTip": "Program.vb",
+              "ViewState": "AgIAACwAAAAAAAAAAAD4vzAAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-11-23T21:58:02.985Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

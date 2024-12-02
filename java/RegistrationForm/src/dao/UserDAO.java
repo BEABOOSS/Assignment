@@ -58,17 +58,17 @@ public class UserDAO {
         }
     }
 
-    private void createTable(){
+    public void createTable(){
 
         String sqlQuery = "CREATE TABLE "+  TABLE_NAME
         + " (user_ID INTEGER PRIMARY KEY AUTO_INCREMENT,"
-        + " username VARCHAR(120),"
-        + " email VARCHAR(120),"
-        + " password VARCHAR(120),"
-        + " gender VARCHAR(120),"
-        + " address VARCHAR(120),"
-        + " state VARCHAR(120),"
-        + " country VARCHAR(120),"
+        + " username VARCHAR(255),"
+        + " email VARCHAR(255),"
+        + " password VARCHAR(255),"
+        + " gender INTEGER,"
+        + " address VARCHAR(255),"
+        + " state INTEGER,"
+        + " country VARCHAR(255),"
         + " phoneNumber VARCHAR(12)"
         + ");";
 

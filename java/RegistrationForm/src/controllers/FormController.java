@@ -1,9 +1,9 @@
 package controllers;
 
-import javax.swing.*;
-import javax.swing.border.Border;
+import model.States;
 
-import java.awt.*;
+import javax.swing.*;
+
 
 import static validators.FormValidator.*;
 
@@ -50,8 +50,8 @@ public class FormController {
                     emailValidation(emailField),
                     passwordValidation(pwdField, cPwdField),
                     getGenderSelected(male, female),
-                    getSelectedState(stateCBox),
                     addressValidation(addrField),
+                    getSelectedState(stateCBox),
                     countryValidation(countryField),
                     phoneNumberValidation(pNumField)
             );

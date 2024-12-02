@@ -1,14 +1,12 @@
 package model;
 
-import java.util.Arrays;
-
 public class User {
     private String name;
     private String email;
     private String password;
-    private String gender;
+    private Gender gender;
     private String address;
-    private String state;
+    private String states;
     private String country;
     private String phoneNumber;
 
@@ -16,9 +14,9 @@ public class User {
             String Name,
             String Email,
             String Password,
-            String Gender,
+            Gender Gender,
             String Address,
-            String State,
+            String States,
             String Country,
             String PhoneNumber
     ){
@@ -27,7 +25,7 @@ public class User {
         this.password = Password;
         this.gender = Gender;
         this.address = Address;
-        this.state = State;
+        this.states = States;
         this.country = Country;
         this.phoneNumber = PhoneNumber;
     }
@@ -57,10 +55,10 @@ public class User {
     }
 
     public String getGender() {
-        return gender;
+        return gender.name();
     }
 
-    public void setGender(String gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 
@@ -73,11 +71,11 @@ public class User {
     }
 
     public String getState() {
-        return state;
+        return states;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setState(String states) {
+        this.states = states;
     }
 
     public String getCountry() {

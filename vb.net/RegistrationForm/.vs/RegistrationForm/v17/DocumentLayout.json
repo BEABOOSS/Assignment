@@ -1,0 +1,87 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\wamp64\\www\\Assignment\\vb.net\\RegistrationForm\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{25D54B60-39DE-4342-8E14-6CBCBDA28275}|RegistrationForm.vbproj|c:\\wamp64\\www\\assignment\\vb.net\\registrationform\\dao\\dbmanager.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{25D54B60-39DE-4342-8E14-6CBCBDA28275}|RegistrationForm.vbproj|solutionrelative:dao\\dbmanager.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25D54B60-39DE-4342-8E14-6CBCBDA28275}|RegistrationForm.vbproj|C:\\wamp64\\www\\Assignment\\vb.net\\RegistrationForm\\views\\form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{25D54B60-39DE-4342-8E14-6CBCBDA28275}|RegistrationForm.vbproj|solutionrelative:views\\form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25D54B60-39DE-4342-8E14-6CBCBDA28275}|RegistrationForm.vbproj|c:\\wamp64\\www\\assignment\\vb.net\\registrationform\\views\\form1.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{25D54B60-39DE-4342-8E14-6CBCBDA28275}|RegistrationForm.vbproj|solutionrelative:views\\form1.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25D54B60-39DE-4342-8E14-6CBCBDA28275}|RegistrationForm.vbproj|C:\\wamp64\\www\\Assignment\\vb.net\\RegistrationForm\\views\\form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "RelativeMoniker": "D:0:0:{25D54B60-39DE-4342-8E14-6CBCBDA28275}|RegistrationForm.vbproj|solutionrelative:views\\form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DbManager.vb",
+              "DocumentMoniker": "C:\\wamp64\\www\\Assignment\\vb.net\\RegistrationForm\\Dao\\DbManager.vb",
+              "RelativeDocumentMoniker": "Dao\\DbManager.vb",
+              "ToolTip": "C:\\wamp64\\www\\Assignment\\vb.net\\RegistrationForm\\Dao\\DbManager.vb",
+              "RelativeToolTip": "Dao\\DbManager.vb",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-12-02T04:39:19.356Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.vb",
+              "DocumentMoniker": "C:\\wamp64\\www\\Assignment\\vb.net\\RegistrationForm\\views\\Form1.vb",
+              "RelativeDocumentMoniker": "views\\Form1.vb",
+              "ToolTip": "C:\\wamp64\\www\\Assignment\\vb.net\\RegistrationForm\\views\\Form1.vb",
+              "RelativeToolTip": "views\\Form1.vb",
+              "ViewState": "AgIAAAgAAAAAAAAAAADwvxMAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-12-01T19:34:22.6Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.Designer.vb",
+              "DocumentMoniker": "C:\\wamp64\\www\\Assignment\\vb.net\\RegistrationForm\\views\\Form1.Designer.vb",
+              "RelativeDocumentMoniker": "views\\Form1.Designer.vb",
+              "ToolTip": "C:\\wamp64\\www\\Assignment\\vb.net\\RegistrationForm\\views\\Form1.Designer.vb",
+              "RelativeToolTip": "views\\Form1.Designer.vb",
+              "ViewState": "AgIAADQAAAAAAAAAAAAAADQAAABVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-12-01T02:57:37.106Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Form1.vb [Design]",
+              "DocumentMoniker": "C:\\wamp64\\www\\Assignment\\vb.net\\RegistrationForm\\views\\Form1.vb",
+              "RelativeDocumentMoniker": "views\\Form1.vb",
+              "ToolTip": "C:\\wamp64\\www\\Assignment\\vb.net\\RegistrationForm\\views\\Form1.vb [Design]",
+              "RelativeToolTip": "views\\Form1.vb [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-11-28T02:31:53.225Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
