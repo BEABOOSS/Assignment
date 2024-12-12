@@ -23,7 +23,7 @@ Public Class DbManager
         Try
             Me.connect.Open()
             cmd.Connection = Me.connect
-            cmd.CommandText = "INSERT INTO " & TABLE_NAME & "VALUES(default, @username, @email, @password, @gender, @address, @state, @country, @phoneNumber)"
+            cmd.CommandText = "INSERT INTO " & TABLE_NAME & " VALUES(default, @username, @email, @password, @gender, @address, @state, @country, @phoneNumber)"
 
             cmd.Parameters.AddWithValue("@username", user.Username)
             cmd.Parameters.AddWithValue("@email", user.Email)
@@ -34,8 +34,8 @@ Public Class DbManager
             cmd.Parameters.AddWithValue("@country", user.Country)
             cmd.Parameters.AddWithValue("@phoneNumber", user.PhoneNumber)
 
-            Dim rowAffected = cmd.ExecuteNonQuery
-            MsgBox("Row Affected: " & rowAffected)
+            cmd.ExecuteNonQuery()
+            MsgBox("Users Created")
 
 
         Catch ex As Exception

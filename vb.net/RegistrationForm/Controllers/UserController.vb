@@ -14,8 +14,9 @@
                                 state As Integer,
                                 country As String,
                                 phoneNum As String)
+        Dim toSave As String = $"Would you like to save this information?%nName: %s%nEmail: %s%nPassword: %s%nGender: %s%nAddress: %s%nState: %s%nCountry: %s%nPhone Number: %s%n"
         Dim user As New Users(username, email, pwd, gender, address, state, country, phoneNum)
-        Dim wantToSave As String = String.Format("Would you like to save this information?%nName: %s%nEmail: %s%nPassword: %s%nGender: %s%nAddress: %s%nState: %s%nCountry: %s%nPhone Number: %s%n",
+        Dim wantToSave As String = String.Format(toSave,
                 user.Username(),
                 user.Email(),
                 user.Password(),

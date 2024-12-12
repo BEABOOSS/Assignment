@@ -36,7 +36,7 @@
               "RelativeDocumentMoniker": "UtilityMethods.vb",
               "ToolTip": "C:\\wamp64\\www\\Assignment\\vb.net\\StudentInfoManager\\UtilityMethods.vb",
               "RelativeToolTip": "UtilityMethods.vb",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAkwGwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACAAAAAAAAAAAAAowCUAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2024-11-29T01:25:55.277Z",
               "EditorCaption": ""
@@ -49,10 +49,9 @@
               "RelativeDocumentMoniker": "Student.vb",
               "ToolTip": "C:\\wamp64\\www\\Assignment\\vb.net\\StudentInfoManager\\Student.vb",
               "RelativeToolTip": "Student.vb",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2024-11-28T03:19:53.46Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-28T03:19:53.46Z"
             },
             {
               "$type": "Document",
@@ -62,10 +61,9 @@
               "RelativeDocumentMoniker": "StudentList.vb",
               "ToolTip": "C:\\wamp64\\www\\Assignment\\vb.net\\StudentInfoManager\\StudentList.vb",
               "RelativeToolTip": "StudentList.vb",
-              "ViewState": "AgIAAPIAAAAAAAAAAAD4v/YAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAEwAAAAAAAAAAIA7wF4AAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2024-11-25T00:17:10.024Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-25T00:17:10.024Z"
             },
             {
               "$type": "Document",
@@ -77,8 +75,7 @@
               "RelativeToolTip": "Program.vb",
               "ViewState": "AgIAACwAAAAAAAAAAAD4vzAAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2024-11-23T21:58:02.985Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-23T21:58:02.985Z"
             }
           ]
         }

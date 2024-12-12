@@ -72,7 +72,7 @@
         Dim consoleWidth As Integer = Console.WindowWidth
         Dim currentLineCursor As Integer = Console.CursorTop - 2
         Dim inputLength As Integer = Console.CursorLeft
-        Dim rowsToClear As Integer = Math.Ceiling(inputLength / consoleWidth)
+        Dim rowsToClear As Integer = Math.Ceiling(inputLength Mod consoleWidth)
 
         For i As Integer = 0 To rowsToClear
             Console.SetCursorPosition(0, currentLineCursor + i)
