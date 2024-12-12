@@ -1,0 +1,45 @@
+﻿@page
+@model CourseRegistration_.Pages.CourseList.IndexModel
+@{
+    ViewData["Title"] = "Course List";
+}
+
+<br />
+<div class="container row p-0 m-0">
+    <div class="col-12">
+        <h2 class="text-primary">Course List</h2>
+    </div>
+    <div class="col-12 border p-3 mt-3">
+        @if (Model.Courses.Count() > 0)
+        {
+            <table class="table table-striped bordered">
+                <thead>
+                    <tr class="table-secondary">
+                        <th><label asp-for="Courses.FirstOrDefault().CourseId">Course Id</label></th>
+                        <th><label asp-for="Courses.FirstOrDefault().CourseNumber">Course Number</label></th>
+                        <th><label asp-for="Courses.FirstOrDefault().CourseName">Course Name</label></th>
+                        <th><label asp-for="Courses.FirstOrDefault().Description">Description</label></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Courses)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(m => item.CourseId)</td>
+                            <td>@Html.DisplayFor(m => item.CourseNumber)</td>
+                            <td>@Html.DisplayFor(m => item.CourseName)</td>
+                            <td>@Html.DisplayFor(m => item.Description)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>No Course available</p>
+        }
+    </div>
+
+
+</div>
+

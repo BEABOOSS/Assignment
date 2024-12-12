@@ -1,0 +1,45 @@
+﻿@page
+@model CourseRegistration.Pages.StudentList.IndexModel
+@{
+    ViewData["Title"] = "Student List";
+}
+
+<br />
+<div class="container row p-0 m-0">
+    <div class="col-12">
+        <h2 class="text-primary">Student List</h2>
+    </div>
+    <div class="col-12 border p-3 mt-3">
+        @if(Model.Students.Count() > 0){
+            <table class="table table-striped bordered">
+                <thead>
+                    <tr class="table-secondary">
+                        <th><label asp-for="Students.FirstOrDefault().StudentId">Student Id</label></th>
+                        <th><label asp-for="Students.FirstOrDefault().FirstName">First Name</label></th>
+                        <th><label asp-for="Students.FirstOrDefault().LastName">Last Name</label></th>
+                        <th><label asp-for="Students.FirstOrDefault().Email">Email</label></th>
+                        <th><label asp-for="Students.FirstOrDefault().PhoneNumber">Phone Number</label></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var item in Model.Students){
+                        <tr>
+                            <td>@Html.DisplayFor(m => item.StudentId)</td>
+                            <td>@Html.DisplayFor(m => item.FirstName)</td>
+                            <td>@Html.DisplayFor(m => item.LastName)</td>
+                            <td>@Html.DisplayFor(m => item.Email)</td>
+                            <td>@Html.DisplayFor(m => item.PhoneNumber)</td>                             
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        } else {
+            <p>No Student available</p>
+        }
+    </div>
+
+
+</div>
+
+
+

@@ -1,0 +1,46 @@
+﻿@page
+@model CourseRegistration_.Pages.InstructorList.IndexModel
+@{
+    ViewData["Title"] = "Instructor List";
+}
+
+<br />
+<div class="container row p-0 m-0">
+    <div class="col-12">
+        <h2 class="text-primary">Instructor List</h2>
+    </div>
+    <div class="col-12 border p-3 mt-3">
+        @if (Model.Instructors.Count() > 0)
+        {
+            <table class="table table-striped bordered">
+                <thead>
+                    <tr class="table-secondary">
+                        <th><label asp-for="Instructors.FirstOrDefault().InstructorId">Instructor Id</label></th>
+                        <th><label asp-for="Instructors.FirstOrDefault().FirstName">First Name</label></th>
+                        <th><label asp-for="Instructors.FirstOrDefault().LastName">Last Name</label></th>
+                        <th><label asp-for="Instructors.FirstOrDefault().Email">Email</label></th>
+                        <th><label asp-for="Instructors.FirstOrDefault().CourseId">Course Id</label></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Instructors)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(m => item.InstructorId)</td>
+                            <td>@Html.DisplayFor(m => item.FirstName)</td>
+                            <td>@Html.DisplayFor(m => item.LastName)</td>
+                            <td>@Html.DisplayFor(m => item.Email)</td>
+                            <td>@Html.DisplayFor(m => item.CourseId)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>No Instructor available</p>
+        }
+    </div>
+
+
+</div>
