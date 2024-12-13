@@ -15,8 +15,7 @@ namespace CourseRegistration_
 
             // Add services to the container.
             builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
-            builder.Services.AddDbContext<CourseRegContext>(option => option.UseSqlServer(connectionString));
-            //builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+            builder.Services.AddDbContext<CourseRegContext>(option => option.UseSqlite(connectionString));
 
             var app = builder.Build();
 
@@ -31,15 +30,16 @@ namespace CourseRegistration_
             else
             {
                 app.UseDeveloperExceptionPage();
-                //app.UseMigrationEndPoint();
             }
 
+            // 
             using (var scope = app.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
 
                 var context = services.GetRequiredService<CourseRegContext>();
                 context.Database.EnsureCreated();
+
 
                 DbInitializer.Initialize(context);
             }
