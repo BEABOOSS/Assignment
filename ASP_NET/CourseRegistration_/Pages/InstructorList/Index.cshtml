@@ -7,7 +7,7 @@
 <br />
 <div class="container row p-0 m-0">
     <div class="col-12">
-        <h2 class="text-primary">Instructor List</h2>
+        <h1 class="text-primary">Instructor List</h1>
     </div>
     <div class="col-12 border p-3 mt-3">
         @if (Model.Instructors.Count() > 0)
@@ -30,7 +30,11 @@
                             <td>@Html.DisplayFor(m => item.FirstName)</td>
                             <td>@Html.DisplayFor(m => item.LastName)</td>
                             <td>@Html.DisplayFor(m => item.Email)</td>
-                            <td>@Html.DisplayFor(m => item.CourseId)</td>
+                            <td>
+                                <a asp-page="../CourseList/CourseInformation" asp-route-id="@item.CourseId">
+                                    @Html.DisplayFor(m => item.CourseId)
+                                </a>
+                            </td>
                         </tr>
                     }
                 </tbody>

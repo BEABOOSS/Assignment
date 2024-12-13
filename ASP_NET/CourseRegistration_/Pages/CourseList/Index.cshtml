@@ -7,7 +7,7 @@
 <br />
 <div class="container row p-0 m-0">
     <div class="col-12">
-        <h2 class="text-primary">Course List</h2>
+        <h1 class="text-primary">Course List</h1>
     </div>
     <div class="col-12 border p-3 mt-3">
         @if (Model.Courses.Count() > 0)
@@ -25,7 +25,11 @@
                     @foreach (var item in Model.Courses)
                     {
                         <tr>
-                            <td>@Html.DisplayFor(m => item.CourseId)</td>
+                            <td>
+                                <a asp-page="CourseInformation" asp-route-id="@item.CourseId">
+                                    @Html.DisplayFor(m => item.CourseId)
+                                </a>
+                            </td>
                             <td>@Html.DisplayFor(m => item.CourseNumber)</td>
                             <td>@Html.DisplayFor(m => item.CourseName)</td>
                             <td>@Html.DisplayFor(m => item.Description)</td>

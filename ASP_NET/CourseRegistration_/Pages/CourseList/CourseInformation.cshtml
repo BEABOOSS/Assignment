@@ -3,7 +3,28 @@
 @{
     ViewData["Title"] = "Course Information";
 }
-<br />
-<div>
-    
-</div>
+
+
+    <div class="card mx-auto text-center" style="width:40%">
+        <div class="card-header text-bg-secondary">    
+            @Model.Course.CourseNumber
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">@Model.Course.CourseName</h5>
+            <p class="card-text">@Model.Course.Description</p>
+            <br />
+            <label asp-for="Instructor.FirstName">Instructor: </label>
+            <span>
+                @Model.Instructor.FirstName
+            </span>
+            <br />
+            <label asp-for="Instructor.Email">Email: </label>
+            <span>
+                @Model.Instructor.Email
+            </span>
+
+        </div>
+
+    </div>
+
+
